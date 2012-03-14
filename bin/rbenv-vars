@@ -11,6 +11,14 @@ find-rbenv-vars-files() {
     echo "${RBENV_ROOT}/vars"
   fi
 
+  if [ -z "$RBENV_VERSION_PATH"]; then
+    RBENV_VERSION_PATH="${RBENV_ROOT}/versions/$(rbenv-version-name)"
+  fi
+
+  if [ -e "${RBENV_VERSION_PATH}/vars" ]; then
+    echo "${RBENV_VERSION_PATH}/vars"
+  fi
+
   local root="$RBENV_DIR"
   local results=""
 
